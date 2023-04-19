@@ -48,9 +48,9 @@ function addMessage(message) {
 chatWidget.addEventListener("click", makeActive);
 document.addEventListener("keyup", (event) => {
     let enteredText = chatWidgetInput.value;
-    enteredText.trim();
-    if (event.keyCode === 13 && enteredText != "") {
-        addMessage(enteredText);
+    let newText = enteredText.trim();
+    if (event.keyCode === 13 && newText != "") {
+        addMessage(newText);
         chatWidgetInput.value = "";
     };
 })
