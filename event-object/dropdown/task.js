@@ -20,6 +20,8 @@ dropdown[0].onclick = activateList;
 for (let i = 0; i < dropdownItem.length; i++) {
     function activateItem() {
         dropdown[0].textContent = dropdownItem[i].textContent;
+        dropdownList[0].classList.remove("dropdown__list_active");
+        flag = true;
         return false;
     }
 
