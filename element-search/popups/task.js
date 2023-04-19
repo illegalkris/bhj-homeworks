@@ -9,6 +9,7 @@ function closeWindow() {
 }
 
 function showSuccess() {
+    document.getElementById("modal_main").style.display = "none";
     document.getElementById("modal_success").style.display = "flex";
 }
 

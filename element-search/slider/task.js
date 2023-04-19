@@ -2,11 +2,12 @@ const prev = document.getElementsByClassName("slider__arrow_prev");
 const next = document.getElementsByClassName("slider__arrow_next");
 const items = document.getElementsByClassName("slider__item");
 
-let index = 0;
 function switchToPrev() {
+    let arrayItems = Array.from(items);
+    let index = arrayItems.findIndex(item => item.classList.contains("slider__item_active")); 
     items[index].classList.remove("slider__item_active");
     if (index === 0) {
-        index = 4;
+        index = items.length - 1;
     } else {
         index--;
     }
@@ -15,8 +16,10 @@ function switchToPrev() {
 }
 
 function switchToNext() {
+    let arrayItems = Array.from(items);
+    let index = arrayItems.findIndex(item => item.classList.contains("slider__item_active")); 
     items[index].classList.remove("slider__item_active");
-    if (index === 4) {
+    if (index === items.length - 1) {
         index = 0
     } else {
         index++;

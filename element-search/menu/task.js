@@ -1,16 +1,18 @@
-const menuLink = document.getElementsByClassName("menu__link");
 const menu = document.getElementsByClassName("menu")
+const menuSub = document.getElementsByClassName("menu_sub");
 
-for (let i = 0; i < menuLink.length; i++) {
+for (let i = 0; i < menuSub.length; i++) {
+    let menuItem =  menuSub[i].closest(".menu__item");
+    let menuLink = menuItem.getElementsByClassName("menu__link")[0];
     function menuOpening() {
-        if(menu[i].classList.contains("menu_sub")) { //значит с первым подменю всё работает, 
-            // а когда второе включает не может найти classList,
-            // хотя он в свойствах есть, не понимаю в чём ошибка
-            menu[i].classList.add("menu_active");
+        let menuActive = document.querySelector(".menu_active");
+        if (menuActive) {
+            menuActive.classList.remove("menu_active");
         }
+        menuSub[i].classList.toggle("menu_active");
 
         return false;
     }
 
-    menuLink[i].onclick = menuOpening;
+    menuLink.onclick = menuOpening;
 }
