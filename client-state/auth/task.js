@@ -1,16 +1,16 @@
 const signinForm = document.getElementById("signin__form");
 const signin = document.getElementById("signin");
-const btn = document.getElementById("signin__btn");
 const form = document.getElementById("signin__form");
-const formText = form.innerHTML;
-let xhr = new XMLHttpRequest();
-xhr.open("GET", "https://students.netoservices.ru/nestjs-backend/auth");
-xhr.responseType = "json";
 
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+})
 signin.classList.add("signin_active");
-btn.onclick = () => {
-    console.log(formText);
-    xhr.send()
-}
-
-// ссылка для запроса у меня не открывается, так и должно быть?
+form.onsubmit = (() => {
+    let xhr = new XMLHttpRequest();
+    xhr.responseType = "json";  
+    xhr.open('POST', 'https://students.netoservices.ru/nestjs-backend/auth');
+    let formData = new FormData(form);
+    xhr.send(formData);
+    console.log(xhr.response);
+})
